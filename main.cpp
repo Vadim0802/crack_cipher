@@ -72,14 +72,14 @@ Crack::Crack(std::string& pathWords, std::string pathFile)
     std::unique_lock<std::mutex> lock(_mutex);
     _condition.wait(lock);
     if (_key.empty())
-        std::cout << "Íå óäàëîñü ðàñøèôðîâàòü ôàéë! Ïîïðîáóéòå èñïîëüçîâàòü äðóãîé ñëîâàðü." << std::endl;
+        std::cout << "ÃÃ¥ Ã³Ã¤Ã Ã«Ã®Ã±Ã¼ Ã°Ã Ã±Ã¸Ã¨Ã´Ã°Ã®Ã¢Ã Ã²Ã¼ Ã´Ã Ã©Ã«! ÃÃ®Ã¯Ã°Ã®Ã¡Ã³Ã©Ã²Ã¥ Ã¨Ã±Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¼ Ã¤Ã°Ã³Ã£Ã®Ã© Ã±Ã«Ã®Ã¢Ã Ã°Ã¼." << std::endl;
     else
     {
-        std::cout << "Ôàéë ðàñøèôðîâàí!" << std::endl;
+        std::cout << "Ã”Ã Ã©Ã« Ã°Ã Ã±Ã¸Ã¨Ã´Ã°Ã®Ã¢Ã Ã­!" << std::endl;
         std::string pathSave;
-        std::cout << "Ââåäèòå ïóòü äëÿ ñîõðàíåíèÿ ôàéëà: "; std::cin >> pathSave;
+        std::cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¯Ã³Ã²Ã¼ Ã¤Ã«Ã¿ Ã±Ã®ÃµÃ°Ã Ã­Ã¥Ã­Ã¨Ã¿ Ã´Ã Ã©Ã«Ã : "; std::cin >> pathSave;
         std::ofstream inputFile(pathSave);
-        inputFile << "Êëþ÷: ";
+        inputFile << "ÃŠÃ«Ã¾Ã·: ";
         for (int i = 0; i < _key.size(); i++)
             inputFile << _key[i]; inputFile << " ";
         inputFile << std::endl;
@@ -144,12 +144,12 @@ void Crack::readEncryptFile(std::string& _pathToEncryptFile)
         _readFile.close();
         if (_encryptLine.empty())
         {
-            std::cout << "Ôàéë ñ øèôðîòåêñòîì ïóñòîé!" << std::endl;
+            std::cout << "Ã”Ã Ã©Ã« Ã± Ã¸Ã¨Ã´Ã°Ã®Ã²Ã¥ÃªÃ±Ã²Ã®Ã¬ Ã¯Ã³Ã±Ã²Ã®Ã©!" << std::endl;
             exit(0);
         }
     }
     else
-        std::cout << "Íå óäàëîñü îòêðûòü ôàéë!" << std::endl;
+        std::cout << "ÃÃ¥ Ã³Ã¤Ã Ã«Ã®Ã±Ã¼ Ã®Ã²ÃªÃ°Ã»Ã²Ã¼ Ã´Ã Ã©Ã«!" << std::endl;
 }
 
 void Crack::readWords(std::string& _pathToWords)
@@ -166,12 +166,12 @@ void Crack::readWords(std::string& _pathToWords)
         _readFile.close();
         if (_encryptLine.empty())
         {
-            std::cout << "Ôàéë ñëîâàðÿ ïóñòîé!" << std::endl;
+            std::cout << "Ã”Ã Ã©Ã« Ã±Ã«Ã®Ã¢Ã Ã°Ã¿ Ã¯Ã³Ã±Ã²Ã®Ã©!" << std::endl;
             exit(0);
         }
     }
     else
-        std::cout << "Íå óäàëîñü îòêðûòü ôàéë!" << std::endl;
+        std::cout << "ÃÃ¥ Ã³Ã¤Ã Ã«Ã®Ã±Ã¼ Ã®Ã²ÃªÃ°Ã»Ã²Ã¼ Ã´Ã Ã©Ã«!" << std::endl;
 }
 
 bool Crack::isTrueKey(int* a, int size)
@@ -312,7 +312,6 @@ void Crack::initThreads()
                         break;
                     }
                 }
-
             }
         });
         _threads.back().detach();
@@ -331,7 +330,7 @@ int main()
     setlocale(LC_ALL, "RU");
     std::string pathFile;
     std::string pathWords;
-    std::cout << "Ââåäèòå ïóòü ê çàøèôðîâàííîìó ôàéëó: "; std::cin >> pathFile;
-    std::cout << "Ââåäèòå ïóòü ê ñëîâàðþ: "; std::cin >> pathWords;
+    std::cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¯Ã³Ã²Ã¼ Ãª Ã§Ã Ã¸Ã¨Ã´Ã°Ã®Ã¢Ã Ã­Ã­Ã®Ã¬Ã³ Ã´Ã Ã©Ã«Ã³: "; std::cin >> pathFile;
+    std::cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¯Ã³Ã²Ã¼ Ãª Ã±Ã«Ã®Ã¢Ã Ã°Ã¾: "; std::cin >> pathWords;
     Crack decrypt(pathWords, pathFile);
 }
